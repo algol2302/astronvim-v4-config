@@ -1,13 +1,44 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize None-ls sources
 
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = "davidmh/cspell.nvim",
   opts = function(_, config)
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
+
+    -- cspell config:
+    local cspell = require "cspell"
+    local cspell_config = {
+      diagnostics_postprocess = function(diagnostic)
+        diagnostic.severity = vim.diagnostic.severity["WARN"] -- ERROR, WARN, INFO, HINT
+      end,
+      config = {
+        find_json = function(_) return vim.fn.expand "~/.config/nvim/spell/cspell.json" end,
+        ---@param payload UseSuggestionSuccess
+        on_use_suggestion = function(payload) end,
+        ---@param payload AddToJSONSuccess
+        on_add_to_json = function(payload)
+          -- For example, you can format the cspell config file after you add a word
+          os.execute(
+            string.format(
+              "jq -S '.words |= sort' %s > %s.tmp && mv %s.tmp %s",
+              payload.cspell_config_path,
+              payload.cspell_config_path,
+              payload.cspell_config_path,
+              payload.cspell_config_path
+            )
+          )
+        end,
+        ---@param payload AddToDictionarySuccess
+        on_add_to_dictionary = function(payload)
+          -- For example, you can sort the dictionary after adding a word
+          os.execute(string.format("sort %s -o %s", payload.dictionary_path, payload.dictionary_path))
+        end,
+      },
+    }
+
     config.sources = {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
@@ -24,19 +55,17 @@ return {
       },
       -- null_ls.builtins.completion.spell,
       null_ls.builtins.diagnostics.codespell,
-      -- null_ls.builtins.diagnostics.cspell.with {
-      --   config = shared_config,
-      -- },
-      -- null_ls.builtins.code_actions.cspell.with {
-      --   config = shared_config,
-      -- },
       null_ls.builtins.diagnostics.protolint,
       null_ls.builtins.formatting.protolint,
-      null_ls.builtins.diagnostics.protoc_gen_lint,
+      -- null_ls.builtins.diagnostics.protoc_gen_lint,
 
       -- Check supported formatters and linters
       -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+
+      -- cspell config:
+      cspell.diagnostics.with(cspell_config),
+      cspell.code_actions.with(cspell_config),
     }
     return config -- return final config table
   end,
