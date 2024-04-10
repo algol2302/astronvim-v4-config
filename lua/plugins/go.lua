@@ -49,7 +49,7 @@ return {
               semanticTokens = true,
               staticcheck = true,
               symbolMatcher = "fuzzy",
-              usePlaceholders = true,
+              usePlaceholders = false,
               experimentalPostfixCompletions = true,
               vulncheck = "Imports",
               gofumpt = false,
@@ -90,7 +90,7 @@ return {
           -- false: do nothing
           -- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
           --   lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
-          lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+          lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
           -- false: do not set default gofmt in gopls format to gofumpt
           lsp_on_attach = nil, -- nil: use on_attach function defined in go/lsp.lua,
           --      when lsp_cfg is true
