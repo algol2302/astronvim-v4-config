@@ -18,7 +18,6 @@ return {
   --
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
   -- { import = "astrocommunity.completion.codeium-vim" },
-
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.true-zen-nvim" },
   { import = "astrocommunity.project.nvim-spectre" },
@@ -33,6 +32,7 @@ return {
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
+  { import = "astrocommunity.recipes.vscode-icons" },
   -- import/override with your plugins folder
   {
     "m-demare/hlargs.nvim",
