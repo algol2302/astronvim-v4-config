@@ -326,10 +326,6 @@ return {
   -- saving sessions
   -- { "tpope/vim-obsession" },
 
-  -- https://github.com/FabijanZulj/blame.nvim
-  -- https://www.reddit.com/r/neovim/comments/15qsa02/blamenvim_fugitive_style_git_blame/?utm_source=share&utm_medium=web2x&context=3
-  { "FabijanZulj/blame.nvim" },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "User AstroFile",
