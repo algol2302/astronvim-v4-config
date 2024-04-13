@@ -87,6 +87,8 @@ return {
       --  vim.g.sonokai_diagnostic_text_highlight = 1
     end,
   },
+
+  -- https://github.com/AstroNvim/astrocommunity/blob/main/lua/astrocommunity/recipes/vscode-icons/init.lua
   {
     "onsails/lspkind.nvim",
     opts = function(_, opts)
@@ -103,6 +105,31 @@ return {
         Object = "",
         Package = "",
         String = "",
+        -- default:
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰜢",
+        Variable = "󰀫",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
       }
     end,
   },
