@@ -123,7 +123,9 @@ return {
           function() vim.cmd "silent! wa" end,
           desc = "Save all renamed buffers",
         },
-        ["<leader>gm"] = { "<cmd>ToggleBlame virtual<cr>", desc = "Toggle blame" },
+        ["<leader>gm"] = { "<cmd>BlameToggle virtual<cr>", desc = "Toggle blame right" },
+        ["<leader>gB"] = { "<cmd>BlameToggle<cr>", desc = "Toggle blame window" },
+
         ["<leader>bf"] = {
           "<cmd>Neotree filesystem reveal left reveal_force_cwd<cr>",
           desc = "Toggle current file dir",

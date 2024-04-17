@@ -23,7 +23,7 @@ return {
   { import = "astrocommunity.project.nvim-spectre" },
   { import = "astrocommunity.syntax.hlargs-nvim" },
   { import = "astrocommunity.git.diffview-nvim" },
-  { import = "astrocommunity.git.blame-nvim" },
+  -- { import = "astrocommunity.git.blame-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.debugging.nvim-bqf" },
   { import = "astrocommunity.project.project-nvim" },
@@ -38,19 +38,5 @@ return {
   {
     "m-demare/hlargs.nvim",
     opts = { color = "#ebdbb2" },
-  },
-
-  {
-    "FabijanZulj/blame.nvim",
-    opts = {
-      mappings = {
-        n = {
-          ["<Leader>gB"] = {
-            "<cmd>ToggleBlame virtual<cr>",
-            desc = "Toggle git blame",
-          },
-        },
-      },
-    },
   },
 }
