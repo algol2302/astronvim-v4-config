@@ -42,6 +42,8 @@ return {
 
   { -- further customize the options set by the community
     "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
