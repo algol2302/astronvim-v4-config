@@ -114,11 +114,18 @@ return {
           "<cmd>ToggleTerm size=10 direction=horizontal<cr><cmd>setlocal nospell<cr>",
           desc = "ToggleTerm horizontal split",
         },
+        ["<leader>tH"] = {
+          "<cmd>2ToggleTerm size=10 direction=horizontal<cr><cmd>setlocal nospell<cr>",
+          desc = "Second ToggleTerm horizontal split",
+        },
         ["<leader>tv"] = {
           "<cmd>ToggleTerm size=80 direction=vertical<cr><cmd>setlocal nospell<cr>",
           desc = "ToggleTerm vertical split",
         },
-
+        ["<leader>tV"] = {
+          "<cmd>2ToggleTerm size=80 direction=vertical<cr><cmd>setlocal nospell<cr>",
+          desc = "Second ToggleTerm vertical split",
+        },
         ["<leader>lw"] = {
           function() vim.cmd "silent! wa" end,
           desc = "Save all renamed buffers",
