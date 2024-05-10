@@ -7,15 +7,19 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
 
-  -- { import = "astrocommunity.colorscheme.nordic-nvim" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.sonokai" },
-  -- { import = "astrocommunity.colorscheme.kanagawa-nvim" },
-  -- { import = "astrocommunity.colorscheme.github-nvim-theme" },
-  -- { import = "astrocommunity.colorscheme.monokai-pro-nvim" },
+  -- { import = "astrocommunity.colorscheme.sonokai" },
+  { import = "astrocommunity.colorscheme.github-nvim-theme" },
   { import = "astrocommunity.colorscheme.vscode-nvim" },
+  -- { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
   -- { import = "astrocommunity.colorscheme.everforest" },
+  -- { import = "astrocommunity.colorscheme.monokai-pro-nvim" },
+  -- { import = "astrocommunity.colorscheme.catppuccin" },
+  -- { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+  -- { import = "astrocommunity.colorscheme.nordic-nvim" },
+  -- { import = "astrocommunity.colorscheme.nightfox-nvim" },
 
+  -- { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.true-zen-nvim" },
   { import = "astrocommunity.project.nvim-spectre" },
@@ -29,14 +33,14 @@ return {
   { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
-  -- { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.recipes.vscode-icons" },
+
   -- import/override with your plugins folder
-  {
-    "m-demare/hlargs.nvim",
-    opts = { color = "#ebdbb2" },
-  },
+  -- {
+  --   "m-demare/hlargs.nvim",
+  --   opts = { color = "#ebdbb2" },
+  -- },
 
   { -- further customize the options set by the community
     "folke/tokyonight.nvim",
@@ -45,7 +49,7 @@ return {
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
-      style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+      style = "day", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
       light_style = "day", -- The theme is used when the background is set to light
       transparent = false, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
@@ -55,7 +59,7 @@ return {
         comments = { italic = true },
         keywords = { italic = true },
         functions = { italic = true },
-        variables = {},
+        variables = { italic = false },
         -- Background styles. Can be "dark", "transparent" or "normal"
         sidebars = "dark", -- style for sidebars, see below
         floats = "dark", -- style for floating windows
@@ -64,12 +68,15 @@ return {
       day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
       hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
       dim_inactive = false, -- dims inactive windows
-      lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+      lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
 
       --- You can override specific color groups to use other groups or a hex color
       --- function will be called with a ColorScheme table
       ---@param colors ColorScheme
-      on_colors = function(colors) end,
+      on_colors = function(colors)
+        -- colors.bg = colors.white
+        -- colors.error = "#ff0000"
+      end,
 
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table

@@ -46,3 +46,5 @@ require("ibl").setup {
   indent = { highlight = highlight },
   scope = { highlight = highlight },
 }
+
+vim.o.background = "light"
