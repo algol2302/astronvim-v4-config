@@ -389,9 +389,10 @@ return {
         custom_highlights = {
           ["@lsp.type.variable.go"] = { fg = "none" },
           ["@lsp.typemod.variable.readonly.go"] = { style = "italic" },
-          ["@lsp.type.namespace.go"] = { fg = "#ba793e", style = "italic" },
+          ["@lsp.type.namespace.go"] = { fg = "#BA793E", style = "italic" },
         },
-        custom_colors = {}, -- Overwrite default colors
+        -- Overwrite default colors
+        custom_colors = { warn = "#e5af21" },
       }
     end,
   },
