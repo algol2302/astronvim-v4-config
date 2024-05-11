@@ -392,7 +392,10 @@ return {
           ["@lsp.type.namespace.go"] = { fg = "#BA793E", style = "italic" },
         },
         -- Overwrite default colors
-        custom_colors = { warn = "#e5af21" },
+        custom_colors = {
+          warn = "#e5af21",
+          green = "#3e6f39",
+        },
       }
     end,
   },
