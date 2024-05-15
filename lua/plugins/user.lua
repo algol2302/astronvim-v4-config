@@ -371,8 +371,8 @@ return {
         styles = {
           comments = "italic",
           strings = "NONE",
-          keywords = "italic",
-          functions = "italic",
+          keywords = "NONE",
+          functions = "NONE",
           variables = "NONE",
           diagnostics = "underline",
         },
