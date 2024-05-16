@@ -15,9 +15,27 @@ return {
         diagnostic.severity = vim.diagnostic.severity["WARN"] -- ERROR, WARN, INFO, HINT
       end,
       config = {
+        -- The CSpell configuration file can take a few different names this option
+        -- lets you specify which name you would like to use when creating a new
+        -- config file from within the `Add word to cspell json file` action.
+        --
+        -- See the currently supported files in https://github.com/davidmh/cspell.nvim/blob/main/lua/cspell/helpers.lua
+        -- config_file_preferred_name = "/home/algol/.config/nvim/spell/cspell.json",
+
+        --- A way to define your own logic to find the CSpell configuration file.
+        -- ---@params cwd The same current working directory defined in the source,
+        --             defaulting to vim.loop.cwd()
+        -- ---@return string|nil The path of the json file
+        -- find_json = function(cwd) end,
+
         find_json = function(_) return vim.fn.expand "~/.config/nvim/spell/cspell.json" end,
+        --- A way to define your own logic to find the CSpell configuration file.
+        --             defaulting to vim.loop.cwd()
+        -- -@return string|nil The path of the json file
+        -- find_json = function(cwd) end,
         ---@param payload UseSuggestionSuccess
         on_use_suggestion = function(payload) end,
+
         ---@param payload AddToJSONSuccess
         on_add_to_json = function(payload)
           -- For example, you can format the cspell config file after you add a word
@@ -31,8 +49,15 @@ return {
             )
           )
         end,
+
         ---@param payload AddToDictionarySuccess
         on_add_to_dictionary = function(payload)
+          -- Includes:
+          -- payload.new_word
+          -- payload.cspell_config_path
+          -- payload.generator_params
+          -- payload.dictionary_path
+
           -- For example, you can sort the dictionary after adding a word
           os.execute(string.format("sort %s -o %s", payload.dictionary_path, payload.dictionary_path))
         end,
