@@ -74,10 +74,10 @@ return {
         disable_defaults = false, -- true|false when true set false to all boolean settings and replace all table
         -- settings with {}
         go = "go", -- go command, can be go[default] or go1.18beta1
-        goimports = "goimports", -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
-        gofmt = "gopls", -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
+        goimports = "golines", -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
+        gofmt = "golines", -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
         fillstruct = "gopls", -- set to fillstruct if gopls fails to fill struct
-        max_line_len = 0, -- max line length in golines format, Target maximum line length for golines
+        max_line_len = 120, -- max line length in golines format, Target maximum line length for golines
         tag_transform = false, -- can be transform option("snakecase", "camelcase", etc) check gomodifytags for details and more options
         tag_options = "json=omitempty", -- sets options sent to gomodifytags, i.e., json=omitempty
         gotests_template = "", -- sets gotests -template parameter (check gotests for details)
@@ -116,10 +116,10 @@ return {
         -- set to true: use gopls to format
         -- false if you want to use other formatter tool(e.g. efm, nulls)
         lsp_inlay_hints = {
-          enable = true,
+          enable = false,
           -- hint style, set to 'eol' for end-of-line hints, 'inlay' for inline hints
           -- inlay only avalible for 0.10.x
-          style = "eol",
+          style = "inlay",
           -- Note: following setup only works for style = 'eol', you do not need to set it for 'inlay'
           -- Only show inlay hints for the current line
           only_current_line = true,
