@@ -310,7 +310,8 @@ return {
       --- @type Tip.config
       require("tip").setup {
         title = "Tip!",
-        url = "https://vimiscool.tech/neotip",
+        url = "https://vtip.43z.one/",
+        -- url = "https://vimiscool.tech/neotip",
       }
     end,
   },
@@ -320,11 +321,6 @@ return {
   --   cmd = "Tabby",
   --   lazy = false, -- < This fixed the issue and load Tabby properly
   -- },
-
-  -- 3-way of merging
-  -- { "tpope/vim-fugitive" },
-  -- saving sessions
-  -- { "tpope/vim-obsession" },
 
   {
     "lukas-reineke/indent-blankline.nvim",
