@@ -368,7 +368,7 @@ return {
           comments = "italic",
           strings = "NONE",
           keywords = "NONE",
-          functions = "NONE",
+          functions = "bold",
           variables = "NONE",
           diagnostics = "underline",
         },
