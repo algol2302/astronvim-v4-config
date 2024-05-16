@@ -391,6 +391,8 @@ return {
         custom_colors = {
           warn = "#e5af21",
           green = "#3e6f39",
+          blue = "#244ab2",
+          cyan = "#448d97",
         },
       }
     end,
