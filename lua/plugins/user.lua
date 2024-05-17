@@ -1,5 +1,3 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
@@ -17,7 +15,7 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha option
+  -- customize alpha options
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
@@ -117,6 +115,11 @@ return {
   },
 
   {
+    "FabijanZulj/blame.nvim",
+    config = function() require("blame").setup() end,
+  },
+
+  {
     "johmsalas/text-case.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
@@ -124,9 +127,41 @@ return {
       require("telescope").load_extension "textcase"
     end,
     keys = {
-      "ga", -- Default invocation prefix
+      "ga", -- default invocation prefix
       { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
     },
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    config = function()
+      local highlight = {
+        "RainbowRed",
+        "RainbowYellow",
+        "RainbowBlue",
+        "RainbowOrange",
+        "RainbowGreen",
+        "RainbowViolet",
+        "RainbowCyan",
+      }
+
+      local hooks = require "ibl.hooks"
+      -- create the highlight groups in the highlight setup hook, so they are reset
+      -- every time the colorscheme changes
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+      end)
+
+      require("ibl").setup { indent = { highlight = highlight } }
+    end,
   },
 
   {
@@ -201,21 +236,6 @@ return {
   },
 
   {
-    "leoluz/nvim-dap-go",
-    ft = "go",
-    opts = {},
-  },
-
-  {
-    "mfussenegger/nvim-dap-python",
-    dependencies = "mfussenegger/nvim-dap",
-    ft = "python", -- NOTE: ft: lazy-load on filetype
-    config = function(_, opts)
-      -- require('dap.ext.vscode').load_launchjs(nil, { python = {'py'} })
-    end,
-  },
-
-  {
     "Pocco81/auto-save.nvim",
     config = function()
       require("auto-save").setup {
@@ -255,146 +275,8 @@ return {
   },
 
   -- {
-  --   "Wansmer/symbol-usage.nvim",
-  --   event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
-  --   config = function() require("symbol-usage").setup() end,
-  -- },
-  --
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-    config = function()
-      require("venv-selector").setup {
-        -- Your options go here
-        name = ".venv",
-        auto_refresh = false,
-      }
-    end,
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    opts = {},
-    keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>lv", "<cmd>VenvSelect<cr>" },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      -- { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
-    },
-  },
-
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   dependencies = { -- add a new dependency to telescope that is our new plugin
-  --     "nvim-telescope/telescope-media-files.nvim",
-  --     -- telescope history of commit for current file:
-  --     {
-  --       "isak102/telescope-git-file-history.nvim",
-  --       dependencies = { "tpope/vim-fugitive" },
-  --     },
-  --   },
-  --   -- the first parameter is the plugin specification
-  --   -- the second is the table of options as set up in Lazy with the `opts` key
-  --   config = function(plugin, opts)
-  --     -- run the core AstroNvim configuration function with the options table
-  --     require "plugins.configs.telescope"(plugin, opts)
-  --
-  --     -- require telescope and load extensions as necessary
-  --     local telescope = require "telescope"
-  --     telescope.load_extension "media_files"
-  --   end,
-  -- },
-
-  {
-    "TobinPalmer/Tip.nvim",
-    event = "VimEnter",
-    init = function()
-      -- Default config
-      --- @type Tip.config
-      require("tip").setup {
-        title = "Tip!",
-        url = "https://vtip.43z.one/",
-        -- url = "https://vimiscool.tech/neotip",
-      }
-    end,
-  },
-
-  -- {
   --   "TabbyML/vim-tabby",
   --   cmd = "Tabby",
   --   lazy = false, -- < This fixed the issue and load Tabby properly
   -- },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "User AstroFile",
-    main = "ibl",
-    opts = {
-      indent = { char = "▏" },
-      scope = { show_start = false, show_end = false },
-      exclude = {
-        buftypes = {
-          "nofile",
-          "terminal",
-        },
-        filetypes = {
-          "help",
-          "startify",
-          "aerial",
-          "alpha",
-          "dashboard",
-          "lazy",
-          "neogitstatus",
-          "NvimTree",
-          "neo-tree",
-          "Trouble",
-        },
-      },
-    },
-  },
-
-  {
-    "FabijanZulj/blame.nvim",
-    config = function() require("blame").setup() end,
-  },
-
-  {
-    "rmehri01/onenord.nvim",
-    config = function()
-      local colors = require("onenord.colors").load()
-      require("onenord").setup {
-        theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
-        borders = true, -- Split window borders
-        fade_nc = false, -- Fade non-current windows, making them more distinguishable
-        -- Style that is applied to various groups: see `highlight-args` for options
-        styles = {
-          comments = "italic",
-          strings = "NONE",
-          keywords = "NONE",
-          functions = "bold",
-          variables = "NONE",
-          diagnostics = "underline",
-        },
-        disable = {
-          background = false, -- Disable setting the background color
-          float_background = false, -- Disable setting the background color for floating windows
-          cursorline = false, -- Disable the cursorline
-          eob_lines = true, -- Hide the end-of-buffer lines
-        },
-        -- Inverse highlight for different groups
-        inverse = {
-          match_paren = false,
-        },
-        custom_highlights = {
-          ["@lsp.type.variable.go"] = { fg = "none" },
-          ["@lsp.typemod.variable.readonly.go"] = { style = "italic" },
-          ["@lsp.type.namespace.go"] = { fg = "#BA793E", style = "italic" },
-        },
-        -- Overwrite default colors
-        custom_colors = {
-          warn = "#e5af21",
-          green = "#3e6f39",
-          blue = "#244ab2",
-          cyan = "#448d97",
-        },
-      }
-    end,
-  },
 }

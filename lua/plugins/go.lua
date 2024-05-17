@@ -7,6 +7,53 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       config = {
         gopls = {
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  commitCharactersSupport = true,
+                  deprecatedSupport = true,
+                  documentationFormat = { "markdown", "plaintext" },
+                  preselectSupport = true,
+                  insertReplaceSupport = true,
+                  labelDetailsSupport = true,
+                  snippetSupport = vim.snippet and true or false,
+                  resolveSupport = {
+                    properties = {
+                      "edit",
+                      "documentation",
+                      "details",
+                      "additionalTextEdits",
+                    },
+                  },
+                },
+                completionList = {
+                  itemDefaults = {
+                    "editRange",
+                    "insertTextFormat",
+                    "insertTextMode",
+                    "data",
+                  },
+                },
+                contextSupport = true,
+                dynamicRegistration = true,
+              },
+            },
+          },
+          filetypes = { "go", "gomod", "gosum", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+          message_level = vim.lsp.protocol.MessageType.Error,
+          cmd = {
+            "gopls", -- share the gopls instance if there is one already
+            "-remote.debug=:0",
+          },
+          root_dir = function(fname)
+            local has_lsp, lspconfig = pcall(require, "lspconfig")
+            if has_lsp then
+              local util = lspconfig.util
+              return util.root_pattern("go.work", "go.mod", ".git")(fname) or util.path.dirname(fname)
+            end
+          end,
+          flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
           settings = {
             gopls = {
               analyses = {
@@ -61,7 +108,8 @@ return {
       },
     },
   },
-  -- Golang support
+
+  -- Golang support plugin
   {
     "ray-x/go.nvim",
     dependencies = { -- optional packages

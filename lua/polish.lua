@@ -1,5 +1,3 @@
--- if true then return end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- This will run last in the setup process and is a good place to configure
 -- things like custom filetypes. This just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
@@ -23,9 +21,4 @@ vim.filetype.add {
       vim.cmd [[setlocal nospell]]
     end,
   }),
-
-  -- vim.api.nvim_set_hl(0, "@lsp.type.variable", {}),
-  -- vim.cmd [[hi @boolean guifg='#BA9CF3' cterm=italic gui=italic]],
-  -- vim.cmd [[hi @lsp.typemod.variable.defaultLibrary guifg='#BA9CF3' cterm=italic gui=italic]]
-  -- vim.cmd [[hi @lsp.typemod.variable.readonly guifg='#BA9CF3' cterm=italic gui=italic]]
 }
