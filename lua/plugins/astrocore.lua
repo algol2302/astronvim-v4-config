@@ -58,6 +58,9 @@ return {
         ui_notifications_enabled = true, -- disable notifications when toggling UI elements
         -- tabby_keybinding_accept = "<Tab>",
       },
+      o = {
+        background = "light",
+      },
     },
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
