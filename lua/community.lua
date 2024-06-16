@@ -30,5 +30,6 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
+  { import = "astrocommunity.recipes.auto-session-restore" },
   -- { import = "astrocommunity.recipes.telescope-lsp-mappings" },
 }
