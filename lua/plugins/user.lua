@@ -279,4 +279,23 @@ return {
   --   cmd = "Tabby",
   --   lazy = false, -- < This fixed the issue and load Tabby properly
   -- },
+  -- {
+  --   "ray-x/navigator.lua",
+  --   requires = {
+  --     { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+  --     { "neovim/nvim-lspconfig" },
+  --   },
+  -- },
+
+  -- {
+  --   "hedyhli/outline.nvim",
+  --   lazy = true,
+  --   cmd = { "Outline", "OutlineOpen" },
+  --   keys = { -- Example mapping to toggle outline
+  --     { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+  --   },
+  --   opts = {
+  --     -- Your setup opts here
+  --   },
+  -- },
 }
