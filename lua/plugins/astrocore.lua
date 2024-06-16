@@ -101,6 +101,10 @@ return {
           function() require("astrocore").toggle_term_cmd "lazydocker" end,
           desc = "ToggleTerm lazydocker",
         },
+        ["<leader>tg"] = {
+          function() require("astrocore").toggle_term_cmd "gitui" end,
+          desc = "ToggleTerm gitui",
+        },
         ["<leader>tk"] = {
           function() require("astrocore").toggle_term_cmd "k9s" end,
           desc = "ToggleTerm k9s",
