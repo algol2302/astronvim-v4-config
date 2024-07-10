@@ -275,6 +275,12 @@ return {
   },
 
   -- {
+  --   "chrisgrieser/nvim-lsp-endhints",
+  --   event = "LspAttach",
+  --   opts = {}, -- required, even if empty
+  -- },
+
+  -- {
   --   "TabbyML/vim-tabby",
   --   cmd = "Tabby",
   --   lazy = false, -- < This fixed the issue and load Tabby properly
