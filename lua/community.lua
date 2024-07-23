@@ -20,7 +20,7 @@ return {
   -- { import = "astrocommunity.colorscheme.github-nvim-theme" },
 
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
-  { import = "astrocommunity.project.nvim-spectre" },
+  { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.debugging.nvim-bqf" },
