@@ -32,4 +32,5 @@ return {
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.recipes.auto-session-restore" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
+  { import = "astrocommunity.utility.mason-tool-installer-nvim" },
 }
