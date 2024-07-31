@@ -138,7 +138,7 @@ return {
           desc = "Toggle current file dir",
         },
         ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find a project" },
-        ["<leader>f;"] = { '<cmd>vimgrep /t.Run("/g %<cr><cr>', desc = "Show all go subtests in quickfix list" },
+        ["<leader>f;"] = { "<cmd>vimgrep /t.Run(/g %<cr><cr>", desc = "Show all go subtests in quickfix list" },
       },
       t = {
         -- setting a mapping to false will disable it
