@@ -23,7 +23,7 @@ return {
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
-  { import = "astrocommunity.debugging.nvim-bqf" },
+  { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.project.project-nvim" },
   { import = "astrocommunity.register.nvim-neoclip-lua" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
