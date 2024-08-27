@@ -166,7 +166,7 @@ return {
         lsp_inlay_hints = {
           enable = false,
           -- hint style, set to 'eol' for end-of-line hints, 'inlay' for inline hints
-          -- inlay only avalible for 0.10.x
+          -- inlay only available for 0.10.x
           style = "inlay",
           -- Note: following setup only works for style = 'eol', you do not need to set it for 'inlay'
           -- Only show inlay hints for the current line
@@ -185,7 +185,7 @@ return {
           show_parameter_hints = true,
           -- prefix for all the other hints (type, chaining)
           other_hints_prefix = "=> ",
-          -- whether to align to the lenght of the longest line in the file
+          -- whether to align to the length of the longest line in the file
           max_len_align = false,
           -- padding from the left if max_len_align is true
           max_len_align_padding = 1,
@@ -239,7 +239,7 @@ return {
         on_exit = function(code, signal, output)
           _, _, _ = code, signal, output
         end, -- callback for jobexit, output : string
-        iferr_vertical_shift = 4, -- defines where the cursor will end up vertically from the begining of if err statement
+        iferr_vertical_shift = 4, -- defines where the cursor will end up vertically from the beginning of if err statement
       }
     end,
     event = { "CmdlineEnter" },
