@@ -279,7 +279,12 @@ return {
   --   event = "LspAttach",
   --   opts = {}, -- required, even if empty
   -- },
-
+  -- {
+  --   "felpafel/inlay-hint.nvim",
+  --   event = "LspAttach",
+  --   config = true,
+  -- },
+  --
   -- {
   --   "TabbyML/vim-tabby",
   --   cmd = "Tabby",
